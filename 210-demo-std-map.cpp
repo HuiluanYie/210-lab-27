@@ -6,6 +6,14 @@
 #include <string>
 using namespace std;
 
+// function prototype
+int display_menu();
+void output(const map<string, tuple<int, string, string>>&);
+void inc_f(map<string, tuple<int, string, string>>&);
+void dec_f(map<string, tuple<int, string, string>>&);
+auto search(map<string, tuple<int, string, string>>&);
+
+
 int main() {
     // declarations
     // The key is the villager's name.
@@ -17,6 +25,30 @@ int main() {
     villagers["Audie"] = make_tuple(8, "Wolf", "foxtrot");
     villagers["Raymond"] = make_tuple(10, "Cat", "crisp");
     villagers.insert({"Marshal", make_tuple(7, "Squirrel", "sulky")});
+    
+    int in;
+    do
+    {
+        in = display_menu();
+        switch (in)
+        {
+        case 1:
+            /* code */
+            break;
+        case 2:
+            /* code */
+            break;
+        case 3:
+            /* code */
+            break;
+        case 4:
+            break;
+        default:
+            cout << "Wrong input! Please choose a number from the menu.\n";
+            break;
+        }
+    } while (in != 4);
+    
 
     // access the map using a range-based for loop
     cout << "Villagers and details(range-based for loop):" << endl;
@@ -62,3 +94,5 @@ int main() {
 
     return 0;
 }
+
+// function definition
