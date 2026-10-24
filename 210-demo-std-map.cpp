@@ -11,7 +11,7 @@ int display_menu();
 void output(const map<string, tuple<int, string, string>>&);
 void inc_f(map<string, tuple<int, string, string>>&);
 void dec_f(map<string, tuple<int, string, string>>&);
-auto search(map<string, tuple<int, string, string>>&);
+auto search(map<string, tuple<int, string, string>>&, string);
 
 
 int main() {
@@ -96,3 +96,43 @@ int main() {
 }
 
 // function definition
+int display_menu()
+{
+    // display_menu() displys the menu
+    // arguments: none
+    // returns: the u
+    int choice;
+    cout << "1. Increase Friendship\n"
+         << "2. Decrease Friendship\n"
+         << "3. Search for Villager\n"
+         << "4. Exit\n"
+         << "Enter choice: ";
+    cin >> choice;
+    return choice;
+}
+
+void output(const map<string, tuple<int, string, string>>& villagers)
+{
+    cout << "Villager details:" << endl;
+    for (const auto& v : villagers) {
+        cout << v.first << " [" 
+             << get<0>(v.second)
+             << ", " << get<1>(v.second) 
+             << ", " << get<2>(v.second) << "]\n";
+    }
+}
+
+void inc_f(map<string, tuple<int, string, string>>& v)
+{
+
+}
+
+void dec_f(map<string, tuple<int, string, string>>& v)
+{
+
+}
+
+auto search(map<string, tuple<int, string, string>>& v, string t)
+{
+
+}
