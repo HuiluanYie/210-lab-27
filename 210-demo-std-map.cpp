@@ -11,7 +11,7 @@ int display_menu();
 void output(const map<string, tuple<int, string, string>>&);
 void inc_f(map<string, tuple<int, string, string>>&);
 void dec_f(map<string, tuple<int, string, string>>&);
-auto search(map<string, tuple<int, string, string>>&, string);
+void search(const map<string, tuple<int, string, string>>&, string);
 
 
 int main() {
@@ -26,6 +26,7 @@ int main() {
     villagers["Raymond"] = make_tuple(10, "Cat", "crisp");
     villagers.insert({"Marshal", make_tuple(7, "Squirrel", "sulky")});
     
+    string v;
     int in;
     do
     {
@@ -33,13 +34,15 @@ int main() {
         switch (in)
         {
         case 1:
-            /* code */
+            inc_f(villagers);
             break;
         case 2:
-            /* code */
+            dec_f(villagers);
             break;
         case 3:
-            /* code */
+            cout << "Please enter the name of the villager you want to search for: ";
+            cin >> v;
+            search(villagers, v);
             break;
         case 4:
             break;
@@ -47,50 +50,8 @@ int main() {
             cout << "Wrong input! Please choose a number from the menu.\n";
             break;
         }
+        output(villagers);
     } while (in != 4);
-    
-
-    // access the map using a range-based for loop
-    cout << "Villagers and details(range-based for loop):" << endl;
-    for (const auto& t : villagers) {
-        cout << t.first << ": \n";
-        cout << "Friendship level: " << get<0>(t.second) << '\n';
-        cout << "Species: " << get<1>(t.second) << '\n';
-        cout << "Catchphrase: " << get<2>(t.second) << '\n';
-        cout << endl;
-    }
-
-    // access the map using iterators
-    cout << "\nVillagers and details(iterators):" << endl;
-    for (map<string, tuple<int, string, string>>::iterator it = villagers.begin(); 
-                                               it != villagers.end(); ++it) {
-        cout << it->first << ": ";
-        cout << get<0>(it->second) << ", ";
-        cout << get<1>(it->second) << ", ";
-        cout << get<2>(it->second);
-        cout << endl;
-    }
-
-    // delete an element
-    villagers.erase("Raymond");
-
-    // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
-    auto it = villagers.find(searchKey);
-    if (it != villagers.end()) {  // the iterator points to beyond the end of the map
-                                       // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s details: ";
-        cout << get<0>(it->second) << ", ";
-        cout << get<1>(it->second) << ", ";
-        cout << get<2>(it->second);
-        cout << endl;
-    } else
-        cout << endl << searchKey << " not found." << endl;
-
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagers.size() << endl;
-    villagers.clear();
-    cout << "Size after clear: " << villagers.size() << endl;
 
     return 0;
 }
@@ -116,7 +77,7 @@ void output(const map<string, tuple<int, string, string>>& villagers)
     // output() displays the contents of villager data
     // arguments: the map of villagers
     // returns: none
-    cout << "Villager details:" << endl;
+    cout << "\n\nVillager details:" << endl;
     for (const auto& v : villagers) {
         cout << v.first << " [" 
              << get<0>(v.second)
@@ -171,7 +132,7 @@ void dec_f(map<string, tuple<int, string, string>>& villagers)
     }
 }
 
-auto search(map<string, tuple<int, string, string>>& villagers, string search_key)
+void search(const map<string, tuple<int, string, string>>& villagers, string search_key)
 {
     auto it = villagers.find(search_key);
     if (it != villagers.end()) {  // the iterator points to beyond the end of the map
@@ -183,5 +144,4 @@ auto search(map<string, tuple<int, string, string>>& villagers, string search_ke
         cout << endl;
     } else
         cout << endl << search_key << " not found." << endl;
-
 }
