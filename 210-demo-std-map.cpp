@@ -134,14 +134,54 @@ void inc_f(map<string, tuple<int, string, string>>& villagers)
     cout << "Please enter the name of the villager you want to increase friendship: ";
     cin >> v;
     auto the_v = villagers.find(v);
-
+    if (the_v == villagers.end())
+    {
+        cout << "villager not found\n";
+    }
+    else if (get<0>(the_v->second) >= 10)
+    {
+        cout << "villager friendship max";
+    }
+    else
+    {
+        get<0>(the_v->second)++;
+    }
 }
 
 void dec_f(map<string, tuple<int, string, string>>& villagers)
 {
-
+    // dec_f() decrease friendship of a villager
+    // arguments: the map of villagers
+    // returns: none
+    string v;
+    cout << "Please enter the name of the villager you want to decrease friendship: ";
+    cin >> v;
+    auto the_v = villagers.find(v);
+    if (the_v == villagers.end())
+    {
+        cout << "villager not found\n";
+    }
+    else if (get<0>(the_v->second) <= 0)
+    {
+        cout << "villager friendship min";
+    }
+    else
+    {
+        get<0>(the_v->second)--;
+    }
 }
 
-auto search(map<string, tuple<int, string, string>>& villagers, string v)
+auto search(map<string, tuple<int, string, string>>& villagers, string search_key)
 {
+    auto it = villagers.find(search_key);
+    if (it != villagers.end()) {  // the iterator points to beyond the end of the map
+                                       // if searchKey is not found
+        cout << "\nFound " << search_key << "'s details: ";
+        cout << get<0>(it->second) << ", ";
+        cout << get<1>(it->second) << ", ";
+        cout << get<2>(it->second);
+        cout << endl;
+    } else
+        cout << endl << search_key << " not found." << endl;
+
 }
