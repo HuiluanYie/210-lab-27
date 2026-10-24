@@ -98,9 +98,9 @@ int main() {
 // function definition
 int display_menu()
 {
-    // display_menu() displys the menu
+    // display_menu() displays the menu
     // arguments: none
-    // returns: the u
+    // returns: the user's choice
     int choice;
     cout << "1. Increase Friendship\n"
          << "2. Decrease Friendship\n"
@@ -113,6 +113,9 @@ int display_menu()
 
 void output(const map<string, tuple<int, string, string>>& villagers)
 {
+    // output() displays the contents of villager data
+    // arguments: the map of villagers
+    // returns: none
     cout << "Villager details:" << endl;
     for (const auto& v : villagers) {
         cout << v.first << " [" 
@@ -122,17 +125,23 @@ void output(const map<string, tuple<int, string, string>>& villagers)
     }
 }
 
-void inc_f(map<string, tuple<int, string, string>>& v)
+void inc_f(map<string, tuple<int, string, string>>& villagers)
+{
+    // inc_f() increase friendship of a villager
+    // arguments: the map of villagers
+    // returns: none
+    string v;
+    cout << "Please enter the name of the villager you want to increase friendship: ";
+    cin >> v;
+    auto the_v = villagers.find(v);
+
+}
+
+void dec_f(map<string, tuple<int, string, string>>& villagers)
 {
 
 }
 
-void dec_f(map<string, tuple<int, string, string>>& v)
+auto search(map<string, tuple<int, string, string>>& villagers, string v)
 {
-
-}
-
-auto search(map<string, tuple<int, string, string>>& v, string t)
-{
-
 }
