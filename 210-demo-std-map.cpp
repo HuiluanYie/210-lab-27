@@ -9,9 +9,12 @@ using namespace std;
 // function prototype
 int display_menu();
 void output(const map<string, tuple<int, string, string>>&);
+void add(map<string, tuple<int, string, string>>&);
+void del(map<string, tuple<int, string, string>>&);
 void inc_f(map<string, tuple<int, string, string>>&);
 void dec_f(map<string, tuple<int, string, string>>&);
 void search(const map<string, tuple<int, string, string>>&, string);
+
 
 
 int main() {
@@ -35,17 +38,23 @@ int main() {
         switch (in)
         {
             case 1:
-                inc_f(villagers);
+                
                 break;
             case 2:
-                dec_f(villagers);
+                
                 break;
             case 3:
+                inc_f(villagers);
+                break;
+            case 4:
+                dec_f(villagers);
+                break;
+            case 5:
                 cout << "Please enter the name of the villager you want to search for: ";
                 cin >> v;
                 search(villagers, v);
                 break;
-            case 4:
+            case 6:
                 break;
             default:
                 cout << "Wrong input! Please choose a number from the menu.\n";
@@ -64,10 +73,12 @@ int display_menu()
     // arguments: none
     // returns: the user's choice
     int choice;
-    cout << "1. Increase Friendship\n"
-         << "2. Decrease Friendship\n"
-         << "3. Search for Villager\n"
-         << "4. Exit\n"
+    cout << "1. Add Villager\n"
+         << "2. Delete Villager\n"
+         << "3. Increase Friendship\n"
+         << "4. Decrease Friendship\n"
+         << "5. Search for Villager\n"
+         << "6. Exit\n"
          << "Enter choice: ";
     cin >> choice;
     return choice;
@@ -85,6 +96,22 @@ void output(const map<string, tuple<int, string, string>>& villagers)
              << ", " << get<1>(v.second) 
              << ", " << get<2>(v.second) << "]\n";
     }
+}
+
+void add(map<string, tuple<int, string, string>>&)
+{
+    cout << "Villager name: ";
+    cin >> 
+    cout << "Friendship level: "
+    cout << "Species: "
+    cout << "Catchphrase: "
+
+    cout <<  << " added."
+}
+
+void del(map<string, tuple<int, string, string>>&)
+{
+
 }
 
 void inc_f(map<string, tuple<int, string, string>>& villagers)
