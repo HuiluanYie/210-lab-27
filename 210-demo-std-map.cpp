@@ -38,10 +38,10 @@ int main() {
         switch (in)
         {
             case 1:
-                
+                add(villagers);
                 break;
             case 2:
-                
+                del(villagers);
                 break;
             case 3:
                 inc_f(villagers);
@@ -61,7 +61,7 @@ int main() {
                 break;
         }
         output(villagers);
-    } while (in != 4);
+    } while (in != 6);
 
     return 0;
 }
@@ -98,20 +98,31 @@ void output(const map<string, tuple<int, string, string>>& villagers)
     }
 }
 
-void add(map<string, tuple<int, string, string>>&)
+void add(map<string, tuple<int, string, string>>& villagers)
 {
+    // add() inserts a villager to the villagers map
+    // arguments: the map of villagers
+    // returns: none
+    string n, s, c;
+    int f;
     cout << "Villager name: ";
-    cin >> 
-    cout << "Friendship level: "
-    cout << "Species: "
-    cout << "Catchphrase: "
-
-    cout <<  << " added."
+    cin >> n;
+    cout << "Friendship level: ";
+    cin >> f;
+    cout << "Species: ";
+    cin >> s;
+    cout << "Catchphrase: ";
+    cin >> c;
+    villagers[n] = make_tuple(f, s, c);
+    cout << n << " added.";
 }
 
-void del(map<string, tuple<int, string, string>>&)
+void del(map<string, tuple<int, string, string>>& villagers)
 {
-
+    string v;
+    cout << "Please enter the name of the villager you want to delete: ";
+    cin >> v;
+    villagers.erase(v);
 }
 
 void inc_f(map<string, tuple<int, string, string>>& villagers)
