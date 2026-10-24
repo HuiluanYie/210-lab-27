@@ -28,27 +28,28 @@ int main() {
     
     string v;
     int in;
+    output(villagers);
     do
     {
         in = display_menu();
         switch (in)
         {
-        case 1:
-            inc_f(villagers);
-            break;
-        case 2:
-            dec_f(villagers);
-            break;
-        case 3:
-            cout << "Please enter the name of the villager you want to search for: ";
-            cin >> v;
-            search(villagers, v);
-            break;
-        case 4:
-            break;
-        default:
-            cout << "Wrong input! Please choose a number from the menu.\n";
-            break;
+            case 1:
+                inc_f(villagers);
+                break;
+            case 2:
+                dec_f(villagers);
+                break;
+            case 3:
+                cout << "Please enter the name of the villager you want to search for: ";
+                cin >> v;
+                search(villagers, v);
+                break;
+            case 4:
+                break;
+            default:
+                cout << "Wrong input! Please choose a number from the menu.\n";
+                break;
         }
         output(villagers);
     } while (in != 4);
